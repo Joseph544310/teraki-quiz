@@ -18,13 +18,12 @@ const EmployeesTable: React.FC = props => {
         // Fetch all employees
         Axios({
             method: 'GET',
-            withCredentials: true,
-            url: 'http://localhost/api/employees'
+            url: 'http://localhost:8000/api/employees/'
         }).then(res => {
             console.log(res.data)
             setEmployees(res.data)
         }).catch(err => console.log(err))
-    })
+    }, [])
 
     return (
         <Table>
@@ -36,21 +35,21 @@ const EmployeesTable: React.FC = props => {
                         <th>Department</th>
                         <th>Salary</th>
                     </tr>
-                </thead>
-                <tbody>
-                    {employees?.map(employee => {
-                        return (
-                            <tr key={employee.id}>
-                                <td>{employee.name}</td>
-                                <td>{employee.address}</td>
-                                <td>{employee.role}</td>
-                                <td>{employee.department}</td>
-                                <td>{employee.salary}</td>
-                            </tr>
-                        )
-                    }
-                    )}
-                </tbody>
+            </thead>
+            <tbody>
+                {employees?.map(employee => {
+                    return (
+                        <tr key={employee.id}>
+                            <td>{employee.name}</td>
+                            <td>{employee.address}</td>
+                            <td>{employee.role}</td>
+                            <td>{employee.department}</td>
+                            <td>{employee.salary}</td>
+                        </tr>
+                    )
+                }
+                )}
+            </tbody>
         </Table>
     )
 }
