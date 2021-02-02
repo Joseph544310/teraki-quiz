@@ -1,7 +1,7 @@
-from .views import ListOrCreate, RetrieveOrUpdateOrDelete
+from .views import List, Retrieve
 from django.urls import path
 
 urlpatterns = [
-    path('', ListOrCreate.as_view()),
-    path('<str:pk>', RetrieveOrUpdateOrDelete.as_view())
+    path('', List.as_view()),
+    path('<str:pk>', Retrieve.as_view())
 ]

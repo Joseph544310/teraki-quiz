@@ -1,15 +1,15 @@
 from .serializers import EmployeeSerializer
 from .models import Employee
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 # Create your views here.
 
 
-class ListOrCreate(ListCreateAPIView):
+class List(ListAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
 
 
-class RetrieveOrUpdateOrDelete(RetrieveUpdateDestroyAPIView):
+class Retrieve(RetrieveAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
 
