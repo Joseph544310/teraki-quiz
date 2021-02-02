@@ -19,8 +19,9 @@ const EmployeesTable: React.FC = props => {
         Axios({
             method: 'GET',
             withCredentials: true,
-            url: '/api/employees'
+            url: 'http://localhost/api/employees'
         }).then(res => {
+            console.log(res.data)
             setEmployees(res.data)
         }).catch(err => console.log(err))
     })
