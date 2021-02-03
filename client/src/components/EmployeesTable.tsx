@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Axios from 'axios'
 import {Table} from 'react-bootstrap'
 
-interface Employee {
+interface IEmployee {
     id: string
     name: string,
     address: string,
@@ -12,7 +12,7 @@ interface Employee {
 }
 
 const EmployeesTable: React.FC = props => {
-    const [employees, setEmployees] = useState<Employee[]>([])
+    const [employees, setEmployees] = useState<IEmployee[]>([])
     const [searchKey, setSearchKey] = useState('')
 
     useEffect(() => {
@@ -33,25 +33,20 @@ const EmployeesTable: React.FC = props => {
             value={searchKey} 
             onChange={e => setSearchKey(e.target.value)}
             placeholder='Search by name...'/>
+
             <Table>
                 <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Role</th>
-                            <th>Department</th>
-                            <th>Salary</th>
+                            {Object.keys(employees[0]).map(key =>
+                            <th key={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</th>)}
                         </tr>
                 </thead>
                 <tbody>
                     {employees?.filter(employee => employee.name.includes(searchKey)).map(employee => {
                         return (
                             <tr key={employee.id}>
-                                <td>{employee.name}</td>
-                                <td>{employee.address}</td>
-                                <td>{employee.role}</td>
-                                <td>{employee.department}</td>
-                                <td>{employee.salary}</td>
+                                {Object.entries(employee).map(entry => 
+                                    <td key={entry[0]}>{entry[1]}</td>)}
                             </tr>
                         )
                     }
