@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Axios from 'axios'
 import {Table} from 'react-bootstrap'
+import '../css/EmployeesTable.css'
 
 interface IEmployee {
     id: string
@@ -30,7 +31,7 @@ const EmployeesTable: React.FC = props => {
     }, [])
 
     return (
-        <div>
+        <div className='employees-table'>
             {employees.length>0?
             <div className='controls'>
                 <input 
@@ -39,17 +40,19 @@ const EmployeesTable: React.FC = props => {
                 onChange={e => setSearchKey(e.target.value)}
                 placeholder='Search by name...'/>
 
-                <label htmlFor='sort-by'>Sort By</label>
-                <select
-                onChange={e => setSortingOption(employeeKeys[Number(e.target.value)])}
-                id='sort-by'>
-                    {employeeKeys.map((key, index) =>
-                    <option key={key} value={index}>{key.charAt(0).toUpperCase() + key.slice(1)}</option>)}
-                </select>
+                <div>
+                    <label htmlFor='sort-by'>Sort By</label>
+                    <select
+                    onChange={e => setSortingOption(employeeKeys[Number(e.target.value)])}
+                    id='sort-by'>
+                        {employeeKeys.map((key, index) =>
+                        <option key={key} value={index}>{key.charAt(0).toUpperCase() + key.slice(1)}</option>)}
+                    </select>
+                </div>
             </div>: null}
 
             {employees.length>0?  
-            <Table>
+            <Table bordered>
                 <thead>
                     <tr>
                         {employeeKeys.map(key =>
