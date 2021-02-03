@@ -44,7 +44,7 @@ const EmployeesTable: React.FC = props => {
                 onChange={e => setSortingOption(employeeKeys[Number(e.target.value)])}
                 id='sort-by'>
                     {employeeKeys.map((key, index) =>
-                    <option key={key} value={index}>{key}</option>)}
+                    <option key={key} value={index}>{key.charAt(0).toUpperCase() + key.slice(1)}</option>)}
                 </select>
             </div>: null}
 
