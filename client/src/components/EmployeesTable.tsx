@@ -11,6 +11,8 @@ interface IEmployee {
     salary: number
 }
 
+const employeeKeys: (keyof IEmployee)[] = ['id', 'name', 'address', 'role', 'department', 'salary']
+
 const EmployeesTable: React.FC = props => {
     const [employees, setEmployees] = useState<IEmployee[]>([])
     const [searchKey, setSearchKey] = useState('')
@@ -39,16 +41,10 @@ const EmployeesTable: React.FC = props => {
 
                 <label htmlFor='sort-by'>Sort By</label>
                 <select
-                onChange={e => {
-                    if (e.target.value === 'id' || e.target.value === 'name' || e.target.value === 'address' ||
-                     e.target.value === 'role' || e.target.value === 'department' || e.target.value === 'salary' )
-                    {
-                            setSortingOption(e.target.value)
-                    }
-                }}
+                onChange={e => setSortingOption(employeeKeys[Number(e.target.value)])}
                 id='sort-by'>
-                    {Object.keys(employees[0]).map(key =>
-                    <option key={key} value={key}>{key}</option>)}
+                    {employeeKeys.map((key, index) =>
+                    <option key={key} value={index}>{key}</option>)}
                 </select>
             </div>: null}
 
@@ -56,7 +52,7 @@ const EmployeesTable: React.FC = props => {
             <Table>
                 <thead>
                     <tr>
-                        {Object.keys(employees[0]).map(key =>
+                        {employeeKeys.map(key =>
                         <th key={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</th>)}
                     </tr>
                 </thead>
