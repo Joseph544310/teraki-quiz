@@ -10,7 +10,6 @@ function App() {
       <NavBar/>
       <Jumbotron>
         <h2>Welcome to Teraki's new web application</h2>
-        <img src={process.env.PUBLIC_URL + '/teraki-logo.png'} alt='logo'/> 
       </Jumbotron>
       <EmployeesTable/>
     </div>
