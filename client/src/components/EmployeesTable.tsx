@@ -4,7 +4,7 @@ import {Table} from 'react-bootstrap'
 import '../css/EmployeesTable.css'
 
 interface IEmployee {
-    id: string
+    id: string,
     name: string,
     address: string,
     role: string,
