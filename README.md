@@ -11,6 +11,6 @@
 3-python manage.py runserver
 ** To access admin page you can use the super user admin/1234 **
 
-# Third-part tools used:
+# Third-party tools used:
 1-react-bootstrap for styled components like table and jumbotron<br />
-2-djangorestframework (used serializer along with ListApiView and RetrieveApiView to serve the data<br />
+2-djangorestframework (used serializer along with ListApiView and RetrieveApiView to serve the data)<br />
