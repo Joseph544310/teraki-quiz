@@ -2,12 +2,17 @@ import React from 'react';
 import EmployeesTable from './EmployeesTable'
 import '../css/App.css';
 import NavBar from './NavBar';
+import {Jumbotron} from 'react-bootstrap'
 
 function App() {
   return (
     <div className="App">
       <NavBar/>
-     <EmployeesTable/>
+      <Jumbotron>
+        <h2>Welcome to Teraki's new web application</h2>
+        <img src={process.env.PUBLIC_URL + '/teraki-logo.png'} alt='logo'/> 
+      </Jumbotron>
+      <EmployeesTable/>
     </div>
   );
 }
