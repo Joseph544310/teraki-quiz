@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import Axios from 'axios'
+import axios from 'axios'
 import {Table} from 'react-bootstrap'
 import '../css/EmployeesTable.css'
 
@@ -21,10 +21,7 @@ const EmployeesTable: React.FC = props => {
 
     useEffect(() => {
         // Fetch all employees
-        Axios({
-            method: 'GET',
-            url: 'http://localhost:8000/api/employees/'
-        }).then(res => {
+        axios.get('http://localhost:8000/api/employees/').then(res => {
             console.log(res.data)
             setEmployees(res.data)
         }).catch(err => console.log(err))
